@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 306972021}
   - component: {fileID: 306972020}
   - component: {fileID: 306972019}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   walkSpeed: 10
+  jumpStrength: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
