@@ -1,22 +1,32 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MGProject.Entities;
 
-public class PlayerController : MonoBehaviour
+namespace MGProject.Player
 {
-	[SerializeField] private InputActionAsset playerControlsMap;
-	[SerializeField] private Movement playerMovement;
-
-	private InputAction moveAction;
-	private InputAction jumpAction;
-
-	private void Start()
+	public class PlayerController : MonoBehaviour
 	{
-		moveAction = playerControlsMap.FindAction("Move");
-		jumpAction = playerControlsMap.FindAction("Jump");
+		[SerializeField] private InputActionAsset playerControlsMap;
+		[SerializeField] private Movement playerMovement;
+		[SerializeField] private Attacker playerAttack; 
 
-		moveAction.performed += (ctx) => playerMovement.Move(ctx.ReadValue<Vector2>().x);
-		moveAction.canceled += (ctx) => playerMovement.Move(0);
+		private InputAction moveAction;
+		private InputAction jumpAction;
 
-		jumpAction.started += (ctx) => playerMovement.Jump();
+		private InputAction attackAction;
+
+		private void Start()
+		{
+			moveAction = playerControlsMap.FindAction("Move");
+			jumpAction = playerControlsMap.FindAction("Jump");
+			attackAction = playerControlsMap.FindAction("Attack");
+
+			moveAction.performed += (ctx) => playerMovement.Move(ctx.ReadValue<Vector2>().x);
+			moveAction.canceled += (ctx) => playerMovement.Move(0);
+
+			jumpAction.started += (ctx) => playerMovement.Jump();
+
+			attackAction.started += (ctx) => playerAttack.ForwardAttack();
+		}
 	}
 }
