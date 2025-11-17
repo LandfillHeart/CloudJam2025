@@ -237,7 +237,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 50620d6870de6ad46bd55d2f5fcd0b40, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -728,7 +728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724967801}
   - component: {fileID: 724967802}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Facing/Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 1095053673}
   - component: {fileID: 1095053672}
   - component: {fileID: 1095053674}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

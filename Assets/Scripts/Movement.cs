@@ -14,25 +14,36 @@ namespace MGProject.Entities
 		private float directionHorizontal;
 		private LayerMask groundLayer;
 
+		private float groundCheckLength;
+
+		private bool IsGrounded => Physics2D.Raycast(transform.position, Vector2.down, groundCheckLength, groundLayer);
+
+
+
 		private void Awake()
 		{
 			rb = GetComponent<Rigidbody2D>();
 			groundLayer = LayerMask.GetMask("Ground");
+			groundCheckLength = transform.localScale.y + transform.localScale.y / 10;
 		}
 
 		private void FixedUpdate()
 		{
 			// move position will override the vertical movement from gravity
+			
+
+			if(Mathf.Approximately(Mathf.Abs(rb.linearVelocityX), 0f)) 
+			{
+				rb.AddForceX(-rb.linearVelocityX, ForceMode2D.Impulse);
+			}
+
 			rb.AddForceX(walkSpeed * directionHorizontal, ForceMode2D.Impulse);
 			if (Mathf.Abs(rb.linearVelocityX) > walkSpeed)
 			{
 				rb.AddForceX((Mathf.Abs(rb.linearVelocityX) - walkSpeed) * -directionHorizontal, ForceMode2D.Impulse);
 			}
 
-			if (rb.linearVelocityY < 0f)
-			{
-				rb.AddForceY(Physics2D.gravity.y, ForceMode2D.Force);
-			}
+			
 		}
 
 		public void Move(float direction)
@@ -54,8 +65,8 @@ namespace MGProject.Entities
 
 		public void Jump()
 		{
-			Debug.DrawRay(transform.position, Vector2.down * 1.15f, Color.yellow, 3f);
-			if (!Physics2D.Raycast(transform.position, Vector2.down, 1.15f, groundLayer)) { return; }
+			Debug.DrawRay(transform.position, Vector2.down * groundCheckLength, Color.yellow, 3f);
+			if (!IsGrounded) { return; }
 			rb.AddForceY(jumpStrength, ForceMode2D.Impulse);
 		}
 
