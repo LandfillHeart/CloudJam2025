@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: IndustrialTile_09_0
+  m_Name: IndustrialTile_03_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 6226032312642052668, guid: bd9490117bc95b64c833b7bc1255a64d, type: 3}
+  m_Sprite: {fileID: -82343079612437840, guid: 1c365e12ecc5df84d96ebd5fc39c9b8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
