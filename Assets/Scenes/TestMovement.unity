@@ -776,9 +776,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8a3586f4361ca4b83dc02d359e33a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGuardCamera
-  degreesOfMotion: 60
-  rotationSpeed: 30
-  delayBetweenRotations: 3
+  degreesOfMotion: 0
+  rotationSpeed: 0
+  delayBetweenRotations: 0
 --- !u!1 &1095053667
 GameObject:
   m_ObjectHideFlags: 0
