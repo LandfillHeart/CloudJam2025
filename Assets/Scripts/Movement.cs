@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MGProject.Entities
@@ -10,6 +11,7 @@ namespace MGProject.Entities
 		[SerializeField] private float jumpStrength;
 
 		private Rigidbody2D rb;
+		public Animator animator;
 
 		private float directionHorizontal;
 		private LayerMask groundLayer;
@@ -54,6 +56,7 @@ namespace MGProject.Entities
 			{
 				float facing = direction < 0f ? 180 : 0;
 				transform.rotation = Quaternion.Euler(0, facing, 0);
+				animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocityX)); //this not working rn its not setting the right animation.
 			}
 
 			if (Mathf.Approximately(direction, 0f))
