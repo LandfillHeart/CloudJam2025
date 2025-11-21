@@ -53,10 +53,12 @@ namespace MGProject.Entities
 		{
 			direction = Mathf.Clamp(direction, -1, 1);
 			this.directionHorizontal = direction;
+			//animation
 			float xVelocity = Mathf.Abs(rb.linearVelocityX);
 			float yVelocity = Mathf.Abs(rb.linearVelocityY);
 			animator.SetFloat("xVelocity", xVelocity);
 			animator.SetFloat("yVelocity", yVelocity);
+			//
 			if (!Mathf.Approximately(direction, 0f))
 			{
 				float facing = direction < 0f ? 180 : 0;
@@ -72,11 +74,13 @@ namespace MGProject.Entities
 
 		public void Jump()
 		{
-			animator.SetBool("isJumping", !IsGrounded);
+			
+			animator.SetBool("isJumping", !IsGrounded); //animation
 			Debug.DrawRay(transform.position, Vector2.down * groundCheckLength, Color.yellow, 3f);
 			if (!IsGrounded) { return; }
 			rb.AddForceY(jumpStrength, ForceMode2D.Impulse);
 		}
+
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
