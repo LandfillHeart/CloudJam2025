@@ -17,6 +17,7 @@ namespace MGProject.Entities
 		private LayerMask groundLayer;
 
 		private float groundCheckLength;
+		private bool isGrounded;  //using it to test jumping animation
 
 		private bool IsGrounded => Physics2D.Raycast(transform.position, Vector2.down, groundCheckLength, groundLayer);
 
@@ -52,11 +53,14 @@ namespace MGProject.Entities
 		{
 			direction = Mathf.Clamp(direction, -1, 1);
 			this.directionHorizontal = direction;
+			float xVelocity = Mathf.Abs(rb.linearVelocityX);
+			float yVelocity = Mathf.Abs(rb.linearVelocityY);
+			animator.SetFloat("xVelocity", xVelocity);
+			animator.SetFloat("yVelocity", yVelocity);
 			if (!Mathf.Approximately(direction, 0f))
 			{
 				float facing = direction < 0f ? 180 : 0;
 				transform.rotation = Quaternion.Euler(0, facing, 0);
-				animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocityX)); //this not working rn its not setting the right animation.
 			}
 
 			if (Mathf.Approximately(direction, 0f))
@@ -68,11 +72,18 @@ namespace MGProject.Entities
 
 		public void Jump()
 		{
+			animator.SetBool("isJumping", !IsGrounded);
 			Debug.DrawRay(transform.position, Vector2.down * groundCheckLength, Color.yellow, 3f);
 			if (!IsGrounded) { return; }
 			rb.AddForceY(jumpStrength, ForceMode2D.Impulse);
 		}
 
-	}
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            isGrounded = true;
+			animator.SetBool("isJumping", !IsGrounded);
+        }
+
+    }
 }
 
