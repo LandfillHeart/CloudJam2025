@@ -3789,9 +3789,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 9e63fc5f86b934047a4782a883f63694, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1754246153}
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 9e63fc5f86b934047a4782a883f63694, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1754246156}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 9e63fc5f86b934047a4782a883f63694, type: 3}
 --- !u!1001 &1636628653
 PrefabInstance:
@@ -4206,23 +4203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MGProject.Entities.Health
   maxHealth: 10
---- !u!114 &1754246156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754246143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951d622f065d9414db47dc21c5adc664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InstantKillFromBehind
-  killRange: 1.5
-  maxBackAngle: 60
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!1001 &1765511487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5699,10 +5679,13 @@ GameObject:
   - component: {fileID: 2072918059}
   - component: {fileID: 2072918058}
   - component: {fileID: 2072918062}
+  - component: {fileID: 2072918068}
   - component: {fileID: 2072918061}
   - component: {fileID: 2072918060}
-  - component: {fileID: 2072918063}
   - component: {fileID: 2072918064}
+  - component: {fileID: 2072918065}
+  - component: {fileID: 2072918067}
+  - component: {fileID: 2072918066}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -5757,7 +5740,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -8019239915147560276, guid: c89abf53f92442448b1f117195833b2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5776,13 +5759,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072918056}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.19, y: -3.59, z: 0}
-  m_LocalScale: {x: 0.5493, y: 0.3964, z: 1}
+  m_LocalRotation: {x: -0, y: -0.040522523, z: -0, w: 0.99917865}
+  m_LocalPosition: {x: -7.9942904, y: -3.3673, z: 0.010828894}
+  m_LocalScale: {x: 1.1463932, y: 1.0620947, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -4.645, z: 0}
 --- !u!114 &2072918060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5797,6 +5780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   walkSpeed: 5
   jumpStrength: 8
+  animator: {fileID: 2072918067}
 --- !u!114 &2072918061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5839,7 +5823,79 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &2072918063
+--- !u!114 &2072918064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072918056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eebae25b72b96724eb933ac739129123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Attacker
+  attackRange: 3
+  attackDamage: 2
+  attackCooldown: 1
+  instantKill: {fileID: 2072918065}
+--- !u!114 &2072918065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072918056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951d622f065d9414db47dc21c5adc664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InstantKillFromBehind
+  killRange: 1.5
+  maxBackAngle: 60
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+--- !u!111 &2072918066
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072918056}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 7c5c2dcca19257e49a63838f334119b6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b468a9aa5d26609409661ac60de5b523, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!95 &2072918067
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072918056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa9c93007fbc01040b75ab382f40636a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &2072918068
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5873,24 +5929,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 2}
+  m_Offset: {x: -0.030390471, y: -0.013799658}
+  m_Size: {x: 0.5954689, y: 1.1070427}
   m_Direction: 0
---- !u!114 &2072918064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072918056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eebae25b72b96724eb933ac739129123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Attacker
-  attackRange: 3
-  attackDamage: 2
-  attackCooldown: 1
 --- !u!1 &2098603429
 GameObject:
   m_ObjectHideFlags: 0
