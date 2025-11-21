@@ -14,7 +14,6 @@ public class CameraOnPlayer : MonoBehaviour
 
     void Start()
     {
-        // Salviamo la Y iniziale della camera
         fixedY = transform.position.y;
     }
 
@@ -22,7 +21,6 @@ public class CameraOnPlayer : MonoBehaviour
     {
         Vector3 desiredPos = _target.position + offset;
 
-        // Mantieni la Y fissa
         desiredPos.y = fixedY;
 
         transform.position = Vector3.SmoothDamp(

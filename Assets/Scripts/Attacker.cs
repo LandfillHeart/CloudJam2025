@@ -37,7 +37,10 @@ public class Attacker : MonoBehaviour
 
 		hitCache = Physics2D.Raycast(transform.position, transform.right, attackRange, enemyLayer);
 
-		Debug.Log(hitCache == true);
+
+
+
+		Debug.Log(hitCache == true); //sta displayando sempre false, giusto o sbagliato? risolto ------ non avevo capito il layermask da mettere
 		if (!hitCache) return;
 
 		enemyCache = hitCache.transform.GetComponent<Health>();

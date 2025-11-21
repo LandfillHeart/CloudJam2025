@@ -31,15 +31,18 @@ namespace MGProject.Entities
 		private void Awake()
 		{
 			currentHealth = maxHealth;
+			
 		}
 
 		private void Die()
 		{
 			// create event, disable behaviours, etc etc
 			Debug.Log($"Entity Killed: {gameObject.name}");
+
+			Destroy(gameObject);
 		}
 
-		public void Damage(float damage)
+		public void Damage(float damage) //here is not joining in any test maybe i should look into attacker to see it there's something wrong there
 		{
 			CurrentHealth -= damage;
 			Debug.Log($"Taking damage, current health: {CurrentHealth}");
